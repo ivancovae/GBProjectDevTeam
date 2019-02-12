@@ -5,6 +5,7 @@ namespace Games
 {
     public class ActorBot : Actor
     {
+        public DataHp HP;
         public float moveSpeed;
         private Vector2 moveDir;
         private Animator animator;
