@@ -2,14 +2,13 @@
 
 namespace Games
 {
-    [System.Serializable]
-    public class DataBookCase
+    [CreateAssetMenu(fileName = "New case", menuName = "Book case")]
+    public class DataBookCase : ScriptableObject
     {
         public string Name;
         public int Id;
         [Multiline] public string Description;
         public Sprite Icon;
         public BookCase PrefabBookCase;
-        public bool Used;
     }
 }

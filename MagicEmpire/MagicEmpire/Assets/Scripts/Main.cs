@@ -13,6 +13,7 @@ namespace Games
             Instance = this;
             _allControllers = new GameObject { name = "Controllers" };
             InventoryController = _allControllers.AddComponent<InventoryController>();
+            ShopController = _allControllers.AddComponent<ShopController>();
             InputController = _allControllers.AddComponent<InputController>();
 
             ObjectManager = _allControllers.AddComponent<ObjectManager>();
@@ -20,6 +21,7 @@ namespace Games
         #region Property
 
          public InventoryController InventoryController { get; private set; }
+         public ShopController ShopController { get; private set; }
          public InputController InputController { get; private set; }
          public ObjectManager ObjectManager { get; private set; }
 

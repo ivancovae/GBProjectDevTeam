@@ -5,19 +5,14 @@ using UnityEngine;
 
 namespace Games
 {
-    public class Inventory : BaseObjectScene
+    [System.Serializable]
+    public class Inventory
     {
         [SerializeField] private List<DataBookCase> _inventary = new List<DataBookCase>();
         
-        protected override void Awake()
+        public Inventory()
         {
-            base.Awake();
-        }
-
-        // Показать список полок на панели
-        private void ShowCases()
-        {
-
+            _inventary.AddRange(Resources.LoadAll<DataBookCase>("bookcases"));
         }
 
         public BookCase SpawnBookCase(string nameBookcase, Vector3 pos) 
@@ -26,8 +21,7 @@ namespace Games
             if (obj.Count() > 0) 
             {
                 var data = obj.First();
-                data.Used = true;
-                var newObj = Instantiate(data.PrefabBookCase, pos, Quaternion.identity);
+                var newObj = GameObject.Instantiate(data.PrefabBookCase, pos, Quaternion.identity);
                 newObj.Name = nameBookcase;
                 return newObj;
             }
@@ -39,8 +33,7 @@ namespace Games
             var obj = _inventary.Where(o => o.Name==bc.Name);
             if (obj.Count() > 0) 
             {
-                obj.First().Used = false;
-                Destroy(bc.InstanceObject);
+                GameObject.Destroy(bc.InstanceObject);
             }
         }
     }

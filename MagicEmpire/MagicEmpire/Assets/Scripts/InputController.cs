@@ -17,7 +17,7 @@ namespace Games.Controller
             {
                 _isActiveSelect = true;
                 var position = Camera.main.ScreenToWorldPoint(Input.mousePosition);    
-                obj = Main.Instance.InventoryController.SpawnBookCase("bookCase0", position);
+                obj = Main.Instance.InventoryController.SpawnBookCase("bookcase0", position);
             }
 
             if (Input.GetMouseButtonUp(MouseButton.LeftButton.GetValue()))

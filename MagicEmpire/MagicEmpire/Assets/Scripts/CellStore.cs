@@ -4,8 +4,8 @@ using UnityEngine;
 
 namespace Games
 {
-    public class BookCase : BaseObjectScene
+    public class CellStore : BaseObjectScene
     {
-        
+        public bool Used;
     }
 }
