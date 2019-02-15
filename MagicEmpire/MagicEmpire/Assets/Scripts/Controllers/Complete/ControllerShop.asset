@@ -9,6 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f2f0388d5f7964b48b2c63f57414ef7b, type: 3}
+  m_Script: {fileID: 11500000, guid: 6b4edae3f2e41034daf238481153f40c, type: 3}
   m_Name: ControllerShop
   m_EditorClassIdentifier: 

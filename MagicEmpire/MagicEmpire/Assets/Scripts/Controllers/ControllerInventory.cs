@@ -11,6 +11,7 @@ namespace Games.Controller
 	public class ControllerInventory : ControllerBase, IAwake 
 	{
         [SerializeField] private List<DataBookCase> _inventary = new List<DataBookCase>();
+        private Transform _dynamic;
         
         // взятие предмета из инвентаря
         public BookCase SpawnBookCase(string nameBookcase, Vector3 pos) 
@@ -19,8 +20,9 @@ namespace Games.Controller
             if (obj.Count() > 0) 
             {
                 var data = obj.First();
-                var newObj = GameObject.Instantiate(data.PrefabBookCase, pos, Quaternion.identity);
+                var newObj = GameObject.Instantiate(data.PrefabBookCase, pos, Quaternion.identity, _dynamic);
                 newObj.Name = nameBookcase;
+                 
                 return newObj;
             }
             return null;
@@ -40,6 +42,7 @@ namespace Games.Controller
 		{
 			GameObject.Find("[SETUP]").AddComponent<InventoryControllerComponent>().Setup(this);	
             _inventary.AddRange(Resources.LoadAll<DataBookCase>("bookcases"));
+            _dynamic = GameObject.Find("[WORLD]/Dynamic").transform;
 		}
 	}
 }
