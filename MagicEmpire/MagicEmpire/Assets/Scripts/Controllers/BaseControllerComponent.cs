@@ -4,11 +4,11 @@ using UnityEngine;
 
 namespace Games.Controller
 {
-    public class BaseController : MonoBehaviour
+    public class BaseControllerComponent : MonoBehaviour
     {
         protected virtual void Awake()
         {
-            
+                
         }
 
         public bool Enabled { get; private set; }
