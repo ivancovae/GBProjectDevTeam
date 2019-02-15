@@ -12,35 +12,49 @@ namespace Games.Controller
 	{
         [SerializeField] private List<DataBookCase> _inventary = new List<DataBookCase>();
         private Transform _dynamic;
+        private BookCase _reservedCase;
+        public BookCase ReservedCase => _reservedCase;
+
+        public float Speed = 10f;
         
         // взятие предмета из инвентаря
-        public BookCase SpawnBookCase(string nameBookcase, Vector3 pos) 
+        public void SpawnBookCase(string nameBookcase, Vector3 pos) 
         {
             var obj = _inventary.Where(o => o.Name==nameBookcase);
             if (obj.Count() > 0) 
             {
                 var data = obj.First();
-                var newObj = GameObject.Instantiate(data.PrefabBookCase, pos, Quaternion.identity, _dynamic);
-                newObj.Name = nameBookcase;
-                 
-                return newObj;
+                _reservedCase = GameObject.Instantiate(data.PrefabBookCase, pos, Quaternion.identity, _dynamic);
+                _reservedCase.Name = nameBookcase;
             }
-            return null;
         }   
 
         // возврат предмета в инвентарь
-        public void DespawnBookCase(BookCase bc) 
+        public void DespawnBookCase() 
         {
-            var obj = _inventary.Where(o => o.Name==bc.Name);
+            if (!_reservedCase)
+                return;
+            var obj = _inventary.Where(o => o.Name==_reservedCase.Name);
             if (obj.Count() > 0) 
             {
-                GameObject.Destroy(bc.InstanceObject);
+                if (_reservedCase)
+                {
+                    GameObject.Destroy(_reservedCase.InstanceObject);
+                }
             }
+        }
+
+        public BookCase TransferBookCase()
+        {
+            var obj = _reservedCase;
+            _reservedCase = null;
+            return obj;
         }
         
 		public void OnAwake()
 		{
-			GameObject.Find("[SETUP]").AddComponent<InventoryControllerComponent>().Setup(this);	
+			GameObject.Find("[SETUP]").AddComponent<InventoryControllerComponent>().Setup(this);
+
             _inventary.AddRange(Resources.LoadAll<DataBookCase>("bookcases"));
             _dynamic = GameObject.Find("[WORLD]/Dynamic").transform;
 		}
