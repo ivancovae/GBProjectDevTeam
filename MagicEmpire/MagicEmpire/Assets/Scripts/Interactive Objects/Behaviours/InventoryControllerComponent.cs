@@ -15,19 +15,19 @@ namespace Games.Controller
             this.controller = controller;
         }
 
-        public void SpawnBookCase(string name, Vector3 pos)
-        {
-            controller.SpawnBookCase(name, pos);
-        }
+        // public void SpawnBookCase(string name, Vector3 pos)
+        // {
+        //     controller.SpawnBookCase(name, pos);
+        // }
 
-        public void DespawnBookCase()
-        {
-            controller.DespawnBookCase();
-        }
+        // public void DespawnBookCase()
+        // {
+        //     controller.DespawnBookCase();
+        // }
 
-        public BookCase TransferBookCase()
-        {
-            return controller.TransferBookCase();
-        }
+        // public BookCase TransferBookCase()
+        // {
+        //     return controller.TransferBookCase();
+        // }
     }
 }

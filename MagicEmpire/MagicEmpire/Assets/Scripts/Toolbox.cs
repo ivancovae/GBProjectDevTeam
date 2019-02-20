@@ -12,6 +12,11 @@ public sealed class Toolbox : Singleton<Toolbox>
 	{
 		private Dictionary<Type,object> data = new Dictionary<Type, object>();
 
+		protected override void Awake()
+		{
+			base.Awake();
+		}
+
 		public static void Add(object obj)
 		{
 			var add = obj;
@@ -28,6 +33,20 @@ public sealed class Toolbox : Singleton<Toolbox>
 				(add as IAwake).OnAwake();
 			}	
 		}
+
+		private static void Remove(object obj)
+		{
+			var controller = obj as ControllerBase;
+			if (controller != null) 
+			{
+				if (controller is IDestroy)
+				{
+					(controller as IDestroy).OnDestroy();
+				}
+				Destroy(controller);
+			}
+			else return;
+		}
 		
 		public static T Get<T>()
 		{
@@ -38,7 +57,11 @@ public sealed class Toolbox : Singleton<Toolbox>
 
 		public void ClearScene()
 		{
-			
+			// foreach(var controller in data.Values)
+			// {
+			// 	Remove(controller);
+			// }
+			data.Clear();
 		}
 	}
 }

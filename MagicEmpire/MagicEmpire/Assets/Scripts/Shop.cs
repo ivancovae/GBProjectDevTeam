@@ -19,5 +19,10 @@ namespace Games
                 _cells.Add(cell);
             }
         }
+
+        public override void Tick()
+        {
+            base.Tick();
+        }
     }
 }

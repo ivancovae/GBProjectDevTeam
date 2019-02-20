@@ -1,10 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Games.Controller;
+using Games.Interface;
 
 namespace Games
 {
-    public abstract class BaseObjectScene : MonoBehaviour
+    public abstract class BaseObjectScene : MonoBehaviour, ITick
     {
         protected Vector3 _position;
         protected GameObject _instanceObject;
@@ -13,9 +15,10 @@ namespace Games
         protected string _name;
         protected bool _isVisible;
 
-#region UnityFunction
         protected virtual void Awake ()
         {
+            
+            ControllerUpdate.AddTo(this);
             _instanceObject = gameObject;
             _name = _instanceObject.name;
             _view = transform.Find("view");
@@ -24,8 +27,13 @@ namespace Games
                 _renderer = _view.GetComponent<SpriteRenderer>();
             }
         }
-#endregion
-#region Property
+
+        public virtual void Tick()
+        {
+
+        }
+
+        #region Property
         public GameObject InstanceObject => _instanceObject;
         public string Name
         {

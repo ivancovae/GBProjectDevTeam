@@ -2,7 +2,7 @@
 
 namespace Games
 {
-    [CreateAssetMenu(fileName = "New case", menuName = "Book case")]
+    [CreateAssetMenu(fileName = "New case", menuName = "Cases/Book case")]
     public class DataBookCase : ScriptableObject
     {
         public string Name;
@@ -10,5 +10,6 @@ namespace Games
         [Multiline] public string Description;
         public Sprite Icon;
         public BookCase PrefabBookCase;
+        public bool Hidden = false;
     }
 }

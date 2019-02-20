@@ -39,5 +39,10 @@ namespace Games.Helpers
         {
             isApplicationQuitting = true;
         }
+
+        protected virtual void Awake ()
+        {
+            
+        }
     }
 }
