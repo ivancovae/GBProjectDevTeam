@@ -10,28 +10,34 @@ namespace Games
 {
 public sealed class Toolbox : Singleton<Toolbox> 
 	{
-		private Dictionary<Type,object> data = new Dictionary<Type, object>();
+		[SerializeField] private Dictionary<int, object> data = new Dictionary<int, object>(5, new FastComparable());
+
+		public static bool Contains<T>() { return Instance.data.ContainsKey(typeof(T).GetHashCode()); }
 
 		protected override void Awake()
 		{
 			base.Awake();
 		}
 
+		public static T Add<T>(Type type = null) where T : new()
+		{
+			object o;
+			var hash = type == null ? typeof(T).GetHashCode() : type.GetHashCode();
+			if (Instance.data.TryGetValue(hash, out o))
+			{
+				InitializeObject(o);
+				return (T) o;
+			}
+			var created = new T();
+			InitializeObject(created);
+			Instance.data.Add(hash, created);
+
+			return created;
+		}
+
 		public static void Add(object obj)
 		{
-			var add = obj;
-			var controller = obj as ControllerBase;
 			
-			if (controller != null)
-				add = Instantiate(controller);
-			else return;
-			
-			Instance.data.Add(obj.GetType(), add);
-
-			if (add is IAwake)
-			{
-				(add as IAwake).OnAwake();
-			}	
 		}
 
 		private static void Remove(object obj)
@@ -48,11 +54,11 @@ public sealed class Toolbox : Singleton<Toolbox>
 			else return;
 		}
 		
-		public static T Get<T>()
+		public static object Get(Type t)
 		{
 			object resolve;
-			Instance.data.TryGetValue(typeof(T), out resolve);
-			return (T) resolve;
+			Instance.data.TryGetValue(t.GetHashCode(), out resolve);
+			return resolve;
 		}
 
 		public void ClearScene()
