@@ -180,12 +180,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: fcb39f8ed36af8a41a31c61d478c7aa1, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8186198080e36c74ab68069de920e885, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.64, y: 0.64}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -240,7 +240,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 117151775}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9bf25e1eef5e73b47b243cb856da09e0, type: 3}
+  m_Script: {fileID: 11500000, guid: 8a20ddbd1961d0a4fae9bd395bcb3872, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &117151778
@@ -363,12 +363,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 178025628}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 39ae6c01aae10d6459e323c1484e558d, type: 3}
+  m_Script: {fileID: 11500000, guid: b880d4e195c1dde49b6ed7045b2dce3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controllers:
-  - {fileID: 11400000, guid: c1603b109bf92f14c975a5e8374c3e3a, type: 2}
+  Controllers:
   - {fileID: 11400000, guid: 8381bf573a99eef42afec770c728abd9, type: 2}
+  ScenesToKeep: []
+  SceneDependsOn: []
 --- !u!1 &457659287
 GameObject:
   m_ObjectHideFlags: 0
@@ -418,7 +419,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 457659287}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9bf25e1eef5e73b47b243cb856da09e0, type: 3}
+  m_Script: {fileID: 11500000, guid: 8a20ddbd1961d0a4fae9bd395bcb3872, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &457659290
@@ -808,12 +809,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: fcb39f8ed36af8a41a31c61d478c7aa1, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8186198080e36c74ab68069de920e885, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.64, y: 0.64}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -934,12 +935,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 461c41edf5c139d4c9bf409edd002af4, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a831bcc25c89e75409dd68e36ffadaa8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.16, y: 0.16}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -1173,12 +1174,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: fcb39f8ed36af8a41a31c61d478c7aa1, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8186198080e36c74ab68069de920e885, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.64, y: 0.64}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -1292,7 +1293,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1837421416}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 59d30103fc976274984e6571dc3c2d04, type: 3}
+  m_Script: {fileID: 11500000, guid: be35b0f05fa994f4e843f7ba0cc184d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _mainPanel: {fileID: 1051262218}
@@ -1308,7 +1309,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1837421416}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1d1f33851ac1ac14e8fd9bec3e36188c, type: 3}
+  m_Script: {fileID: 11500000, guid: 61828b8690ff6404cb89ae8cfe29fcd5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &1837421420
@@ -1320,7 +1321,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1837421416}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 52e03bcf4b906fc4d99dcbeb17b19e36, type: 3}
+  m_Script: {fileID: 11500000, guid: f6a01dcfb27136444b742ce18674ac30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1962408021
@@ -1612,7 +1613,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2120758225}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9bf25e1eef5e73b47b243cb856da09e0, type: 3}
+  m_Script: {fileID: 11500000, guid: 8a20ddbd1961d0a4fae9bd395bcb3872, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &2120758228

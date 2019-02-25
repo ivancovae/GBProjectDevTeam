@@ -8,16 +8,11 @@ using Games.Interface;
 
 namespace Games
 {
-public sealed class Toolbox : Singleton<Toolbox> 
+	public sealed class Toolbox : Singleton<Toolbox> 
 	{
 		[SerializeField] private Dictionary<int, object> data = new Dictionary<int, object>(5, new FastComparable());
 
 		public static bool Contains<T>() { return Instance.data.ContainsKey(typeof(T).GetHashCode()); }
-
-		protected override void Awake()
-		{
-			base.Awake();
-		}
 
 		public static T Add<T>(Type type = null) where T : new()
 		{
@@ -37,23 +32,19 @@ public sealed class Toolbox : Singleton<Toolbox>
 
 		public static void Add(object obj)
 		{
-			
+			object possibleObj;
+			if (Instance.data.TryGetValue(obj.GetType().GetHashCode(), out possibleObj))
+			{
+				InitializeObject(possibleObj);
+			}	
+			var add = obj;
+			var scriptable = obj as ScriptableObject;
+			if (scriptable) add = Instantiate(scriptable);
+			InitializeObject(obj);
+
+			Instance.data.Add(obj.GetType().GetHashCode(), add);
 		}
 
-		private static void Remove(object obj)
-		{
-			var controller = obj as ControllerBase;
-			if (controller != null) 
-			{
-				if (controller is IDestroy)
-				{
-					(controller as IDestroy).OnDestroy();
-				}
-				Destroy(controller);
-			}
-			else return;
-		}
-		
 		public static object Get(Type t)
 		{
 			object resolve;
@@ -61,13 +52,75 @@ public sealed class Toolbox : Singleton<Toolbox>
 			return resolve;
 		}
 
-		public void ClearScene()
+		private static void Remove(object obj)
 		{
-			// foreach(var controller in data.Values)
-			// {
-			// 	Remove(controller);
-			// }
-			data.Clear();
+			if (ApplicationIsQuitting)
+			Instance.data.Remove(obj.GetType().GetHashCode());
+		}
+
+		public static void InitializeObject(object obj)
+		{
+			var awakeble = obj as IAwake;
+			if (awakeble != null) awakeble.OnAwake();
+			ProcessingUpdate.Default.Add(obj);
+		}
+
+		public static T GetCreate<T>()
+		{
+			object resolve;
+			var    hasValue = Instance.data.TryGetValue(typeof(T).GetHashCode(), out resolve);
+
+			if (!hasValue)
+				Instance.data.TryGetValue(typeof(T).GetHashCode(), out resolve);
+			return (T) resolve;
+		}
+
+		public static T Get<T>()
+		{
+			object resolve;
+
+			var hasValue = Instance.data.TryGetValue(typeof(T).GetHashCode(), out resolve);
+
+			if (!hasValue)
+				Instance.data.TryGetValue(typeof(T).GetHashCode(), out resolve);
+			return (T) resolve;
+		}
+
+		internal void ClearSessionData()
+		{
+			if (ApplicationIsQuitting) return;
+
+			var toWipe = new List<int>();
+
+			foreach (var pair in data)
+			{
+				var isKernel = pair.Value as IKernel;
+				if (isKernel == null) toWipe.Add(pair.Key);
+
+				var needToBeCleaned = pair.Value as IDisposable;
+				if (needToBeCleaned == null) continue;
+
+				needToBeCleaned.Dispose();
+			}
+
+			ProcessingScene.Default.Dispose();
+			ProcessingUpdate.Default.Dispose();
+			
+			for (var i = 0; i < toWipe.Count; i++)
+			{
+				data.Remove(toWipe[i]);
+			}
+		}
+
+		public static void DisposeObject(object obj)
+		{
+			if (isQuittingOrChangingScene()) return;
+
+			var disposable = obj as IDisposable;
+			if (disposable != null)
+			{
+				disposable.Dispose();
+			}
 		}
 	}
 }
