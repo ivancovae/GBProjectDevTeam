@@ -16,13 +16,14 @@ namespace Games.UI
 			_enterToShop.GetText.text = "Enter to shop";  // TODO: переделать для локализации
 			_enterToShop.GetControl.onClick.AddListener(delegate
 			{
-				LoadScene(Main.Instance.Scenes.ShopScene.SceneName);
+				ProcessingSceneLoad.To(3);
+				//LoadScene(Main.Instance.Scenes.Game.SceneAsset.name);
 			});
 
 			_buyProviders.GetText.text = "Buy providers"; // TODO: переделать для локализации
 			_buyProviders.GetControl.onClick.AddListener(delegate
 			{
-				
+				//LoadScene(Main.Instance.Scenes.Game.SceneAsset.name);
 			});
 
 			_quit.GetText.text = "Quit"; // TODO: переделать для локализации
@@ -61,7 +62,7 @@ namespace Games.UI
 		{
 			SceneManager.sceneLoaded += delegate 
 			{
-				Main.Instance.InitShop();
+				//Main.Instance.InitGame();
 			};
 			Interface.LoadSceneAsync(lvl);
 		}

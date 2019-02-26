@@ -9,12 +9,6 @@ EditorBuildSettings:
     path: Assets/Scenes/GlobalMapScene.unity
     guid: 3b323bcc037a6dc46b69a175a810957b
   - enabled: 1
-    path: Assets/Scenes/IntroScene.unity
-    guid: 0741bf73f67d44940bd9f97e0dff37f2
-  - enabled: 1
-    path: Assets/Scenes/LoadingScene.unity
-    guid: aeecdcb8124c5ae44bf3eff54bc9717f
-  - enabled: 1
     path: Assets/Scenes/ShopScene.unity
     guid: 6e18f21045f79ce47a7ca27c4569e81b
   m_configObjects: {}

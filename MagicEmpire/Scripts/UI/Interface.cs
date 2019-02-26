@@ -45,9 +45,6 @@ namespace Games.UI
 				case InterfaceObject.GlobalMapMenu:
 					_currentMenu = _globalMapMenu;
 					break;
-				case InterfaceObject.ShopMenu:
-					_currentMenu = _shopMenu;
-					break;
 				default:
 					break;
 			}
@@ -69,9 +66,6 @@ namespace Games.UI
 			{
 				case InterfaceObject.GlobalMapMenu:
 					_currentMenu = _globalMapMenu;
-					break;
-				case InterfaceObject.ShopMenu:
-					_currentMenu = _shopMenu;
 					break;
 				default:
 					break;

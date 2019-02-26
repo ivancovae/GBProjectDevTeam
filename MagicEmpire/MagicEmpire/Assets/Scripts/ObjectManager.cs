@@ -6,12 +6,15 @@ namespace Games
 {
     public class ObjectManager : MonoBehaviour
     {
-        [SerializeField] private Inventory _inventory;
-        public Inventory Inventory => _inventory;
+        [SerializeField] private ItemsShop _items;
 
-        private void Awake()
+        [SerializeField] private ShopItem _reservedItem;
+        [SerializeField] private GameObject _testItem;
+        
+        
+        public ShopItem GetItem(int num)
         {
-            _inventory = new Inventory();
+            return _items.GetItem(num);
         }
     }
 }
