@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93fad3b8eb9497d459c3ecef232a90c8, type: 3}
+  m_Name: stand1
+  m_EditorClassIdentifier: 
+  Name: bookcase1
+  Id: 1
+  Description: 
+  Icon: {fileID: 21300000, guid: e0fdcc7ea31cc704ea69b67697ff19bb, type: 3}
+  PrefabBookCase: {fileID: 3909333332119328693, guid: 60f7b550f61d5b34a952f608f0951fc9,
+    type: 3}
+  Hidden: 0
